@@ -1,22 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+}
 
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-header { background: #111; color: white; padding: 20px; text-align: center; }
-.logo { width: 60px; vertical-align: middle; }
-.nav { background: #222; padding: 10px; text-align: center; }
-.nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-main { padding: 20px; }
-.cards { display: flex; flex-wrap: wrap; gap: 15px; }
-.card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; min-width: 250px; cursor: pointer; }
-.card:hover { background: #f0f0f0; }
-.stat-grid { display: flex; flex-wrap: wrap; gap: 15px; }
+header {
+  background: #111;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
 
+.logo {
+  width: 60px;
+  vertical-align: middle;
+}
 
-/* Responsive enhancements */
+.nav {
+  background: #222;
+  padding: 10px;
+  text-align: center;
+}
+
+.nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.card:hover {
+  background: #f0f0f0;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* Responsive Enhancements */
 @media (max-width: 768px) {
   .cards,
   .stat-grid {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
   }
 
   .nav a {
@@ -26,8 +75,8 @@ main { padding: 20px; }
   }
 
   .card {
-    font-size: 14px;
-    padding: 12px;
+    font-size: 15px;
+    padding: 14px;
   }
 
   header h1 {
@@ -60,20 +109,5 @@ main { padding: 20px; }
 
   .logo {
     width: 40px;
-  }
-}
-
-/* Force cards to stack vertically on small screens */
-@media (max-width: 768px) {
-  .cards,
-  .stat-grid {
-    display: flex;
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-
-  .card {
-    width: 100% !important;
-    box-sizing: border-box;
   }
 }
