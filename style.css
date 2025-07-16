@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -34,9 +35,11 @@ main {
   padding: 20px;
 }
 
-.cards {
+/* Grid layout: 3 cards per row by default */
+.cards,
+.stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
@@ -55,13 +58,7 @@ main {
   background: #f0f0f0;
 }
 
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-/* Responsive Enhancements */
+/* Responsive: 1 card per row on phones */
 @media (max-width: 768px) {
   .cards,
   .stat-grid {
@@ -75,8 +72,8 @@ main {
   }
 
   .card {
-    font-size: 15px;
-    padding: 14px;
+    font-size: 14px;
+    padding: 12px;
   }
 
   header h1 {
