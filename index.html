@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PitchSide – Football Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="PitchSide Logo" class="logo">
+    <h1>PitchSide</h1>
+    <p>Your ultimate football dashboard</p>
+  </header>
+  <nav class="nav">
+    <a href="#live">Live Matches</a>
+    <a href="#news">News</a>
+    <a href="#stats">Players & Leagues</a>
+  </nav>
+
+  <main>
+    <section id="live">
+      <h2>📅 Matches on <span id="today"></span></h2>
+      <div class="cards" id="matchCards">
+        <p>Loading matches...</p>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2>📰 Latest Football News</h2>
+      <div class="cards" id="newsCards">
+        <p>Loading news...</p>
+      </div>
+    </section>
+
+    <section id="stats">
+      <h2>📊 Player Stats & League Standings</h2>
+      <div class="stat-grid">
+        <div class="card"><h3>Mohamed Salah</h3><p>29 goals • 18 assists (2024/25)</p></div>
+        <div class="card"><h3>Alexander Isak</h3><p>23 goals • Newcastle Utd</p></div>
+        <div class="card"><h3>Premier League Standings</h3><p>1. Man City – 89 pts • 2. Liverpool – 79 pts</p></div>
+        <div class="card"><h3>La Liga Standings</h3><p>1. Real Madrid – 85 pts • 2. Barca – 78 pts</p></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
