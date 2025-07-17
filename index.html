@@ -1,50 +1,1152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PitchSide – Football Hub</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Comprehensive Football Gateway - Latest results, news, standings, and top players">
+    <meta name="keywords" content="football, soccer, football news, match results, league, players, stats">
+    <title>⚽ Football Gateway | The Ultimate Football Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header>
-    <img src="logo.png" alt="PitchSide Logo" class="logo">
-    <h1>PitchSide</h1>
-    <p>Your ultimate football dashboard</p>
-  </header>
-  <nav class="nav">
-    <a href="#live">📅 Live Matches</a>
-    <a href="#news">📰 News</a>
-    <a href="#stats">📊 Players & Leagues</a>
-  </nav>
-
-  <main>
-    <section id="live">
-      <h2>📅 Matches on <span id="today"></span></h2>
-      <div class="cards" id="matchCards">
-        <p>Loading matches...</p>
-      </div>
-    </section>
-
-    <section id="news">
-      <h2>📰 Latest Football News</h2>
-      <div class="cards" id="newsCards">
-        <p>Loading news...</p>
-      </div>
-    </section>
-
-    <section id="stats">
-      <h2>📊 Player Stats & League Standings</h2>
-      <div class="stat-grid">
-        <div class="card"><h3>Mohamed Salah</h3><p>29 goals • 18 assists (2024/25)</p></div>
-        <div class="card"><h3>Alexander Isak</h3><p>23 goals • Newcastle Utd</p></div>
-        <div class="card"><h3>Premier League Standings</h3><p>1. Man City – 89 pts • 2. Liverpool – 79 pts</p></div>
-        <div class="card"><h3>La Liga Standings</h3><p>1. Real Madrid – 85 pts • 2. Barca – 78 pts</p></div>
-      </div>
-    </section>
-  </main>
-
-  <script src="main.js"></script>
+<body class="dark-mode">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Theme toggle -->
+    <div class="theme-switch">
+        <button class="toggle-button" onclick="toggleTheme()" aria-label="Toggle theme" tabindex="0">
+            <span class="toggle-thumb"></span>
+        </button>
+        <span class="theme-label">Toggle Theme</span>
+    </div>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showContent('scores')">
+                <img src="logo.png" alt="logo" height="80">
+                <span>PitchSide</span>
+            </a>
+            <div class="nav-menu">
+                <button class="nav-link active" data-section="scores" onclick="showContent('scores', this)">
+                    <i class="fas fa-futbol"></i> Match Results
+                </button>
+                <button class="nav-link" data-section="news" onclick="showContent('news', this)">
+                    <i class="fas fa-newspaper"></i> Football News
+                </button>
+                <button class="nav-link" data-section="table" onclick="showContent('table', this)">
+                    <i class="fas fa-table"></i> League Table
+                </button>
+                <button class="nav-link" data-section="players" onclick="showContent('players', this)">
+                    <i class="fas fa-users"></i> Top Players
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <header>
+        <h1 class="animate__animated animate__fadeIn">
+            <span>PitchSide</span>
+        </h1>
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Your ultimate destination for live scores, breaking news, in-depth stats, and everything football.</p>
+        
+        <div class="search-container animate__animated animate__fadeIn animate__delay-2s">
+            <input type="text" class="search-input" placeholder="Search for teams, players or matches...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="main-content" id="main-content">
+        <section id="scores" class="section active">
+            <div class="section-header">
+                <h2>Match Results</h2>
+                <div class="filter-controls">
+                    <button class="filter-button active">All</button>
+                    <button class="filter-button">Premier League</button>
+                    <button class="filter-button">Champions League</button>
+                    <button class="filter-button">La Liga</button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card animate__animated animate__fadeIn">
+                    <div class="stat-card-title">Matches Today</div>
+                    <div class="stat-card-value">24</div>
+                    <div class="stat-card-change change-up">
+                        <i class="fas fa-arrow-up"></i> 3 from yesterday
+                    </div>
+                </div>
+                <div class="stat-card animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                    <div class="stat-card-title">Goals Scored</div>
+                    <div class="stat-card-value">68</div>
+                    <div class="stat-card-change change-up">
+                        <i class="fas fa-arrow-up"></i> 12% from avg
+                    </div>
+                </div>
+                <div class="stat-card animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                    <div class="stat-card-title">Top Scorer</div>
+                    <div class="stat-card-value">Haaland</div>
+                    <div class="stat-card-change">
+                        3 goals today
+                    </div>
+                </div>
+                <div class="stat-card animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                    <div class="stat-card-title">Live Matches</div>
+                    <div class="stat-card-value">5</div>
+                    <div class="stat-card-change change-down">
+                        <i class="fas fa-arrow-down"></i> 2 finished
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="news" class="section">
+            <div class="section-header">
+                <h2>Latest News</h2>
+                <div class="filter-controls">
+                    <button class="filter-button active">All</button>
+                    <button class="filter-button">Transfers</button>
+                    <button class="filter-button">Injuries</button>
+                    <button class="filter-button">Rumors</button>
+                </div>
+            </div>
+            
+            <div class="news-container">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="table" class="section">
+            <div class="section-header">
+                <h2>English Premier League Table</h2>
+                <div class="filter-controls">
+                    <button class="filter-button active">2023/24</button>
+                    <button class="filter-button">Top Scorers</button>
+                    <button class="filter-button">Assists</button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="players" class="section">
+            <div class="section-header">
+                <h2>Top Players</h2>
+                <div class="filter-controls">
+                    <button class="filter-button active">All</button>
+                    <button class="filter-button">Forwards</button>
+                    <button class="filter-button">Midfielders</button>
+                    <button class="filter-button">Defenders</button>
+                </div>
+            </div>
+            
+            <div class="players-grid">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Football Gateway</h3>
+                <p>Your comprehensive portal for everything football. Match results, latest news, league standings, and information about the best players worldwide.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#" onclick="showContent('scores')"><i class="fas fa-futbol"></i> Match Results</a>
+                    <a href="#" onclick="showContent('news')"><i class="fas fa-newspaper"></i> Football News</a>
+                    <a href="#" onclick="showContent('table')"><i class="fas fa-table"></i> League Table</a>
+                    <a href="#" onclick="showContent('players')"><i class="fas fa-users"></i> Top Players</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Information</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                    <a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>All rights reserved © Football Gateway 2024</p>
+        </div>
+    </footer>
+    
+    <script>
+        // API configuration
+        const API_CONFIG = {
+            footballData: {
+                apiKey: 'ae7d4e153f29e96d0bb7f5e498fb8f25',
+                baseUrl: 'ttps://v3.football.api-sports.io/fixtures?date=${today}'
+            },
+            newsApi: {
+                apiKey: 'YOUR_API_KEY', // Replace with your actual API key
+                baseUrl: 'https://newsapi.org/v2/'
+            }
+        };
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set theme from localStorage or prefer-color-scheme
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem("theme");
+            
+            if (savedTheme === "light" || (!savedTheme && !prefersDark)) {
+                document.body.classList.remove("dark-mode");
+            }
+            
+            // Update toggle thumb icon
+            updateToggleThumb();
+            
+            // Add intersection observer for animations
+            setupIntersectionObserver();
+            
+            // Load initial data based on active section
+            const activeSection = document.querySelector('.section.active').id;
+            loadSectionData(activeSection);
+            
+            // Handle initial hash if present
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                if (sectionId && document.getElementById(sectionId)) {
+                    showContent(sectionId);
+                }
+            }
+            
+            // Add event listeners for filter buttons
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    // In a real app, you would filter content here
+                });
+            });
+            
+            // Search functionality
+            const searchButton = document.querySelector('.search-button');
+            const searchInput = document.querySelector('.search-input');
+            
+            searchButton.addEventListener('click', () => {
+                if (searchInput.value.trim()) {
+                    performSearch(searchInput.value.trim());
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && searchInput.value.trim()) {
+                    performSearch(searchInput.value.trim());
+                }
+            });
+        });
+        
+        // Perform search
+        function performSearch(query) {
+            // In a real app, you would implement search functionality
+            alert(`Searching for: ${query}`);
+            // You could filter content or make an API call here
+        }
+        
+        // Load data for a specific section
+        function loadSectionData(sectionId) {
+            switch(sectionId) {
+                case 'scores':
+                    fetchMatchResults();
+                    break;
+                case 'news':
+                    fetchFootballNews();
+                    break;
+                case 'table':
+                    fetchLeagueTable();
+                    break;
+                case 'players':
+                    fetchTopPlayers();
+                    break;
+            }
+        }
+        
+        // Fetch match results from API
+        async function fetchMatchResults() {
+            try {
+                // In a real app, you would use the actual API call:
+                // const response = await fetch(`${API_CONFIG.footballData.baseUrl}matches`, {
+                //     headers: { 'X-Auth-Token': API_CONFIG.footballData.apiKey }
+                // });
+                // const data = await response.json();
+                
+                // For demo purposes, we'll use mock data
+                const mockMatches = [
+                    {
+                        competition: { name: "Premier League", emblem: "https://crests.football-data.org/PL.png" },
+                        homeTeam: { name: "Liverpool", crest: "https://crests.football-data.org/64.png" },
+                        awayTeam: { name: "Manchester City", crest: "https://crests.football-data.org/65.png" },
+                        score: { fullTime: { home: 1, away: 3 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-20T14:00:00Z"
+                    },
+                    {
+                        competition: { name: "La Liga", emblem: "https://crests.football-data.org/PD.png" },
+                        homeTeam: { name: "Real Madrid", crest: "https://crests.football-data.org/86.png" },
+                        awayTeam: { name: "Barcelona", crest: "https://crests.football-data.org/81.png" },
+                        score: { fullTime: { home: 2, away: 1 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-21T20:00:00Z"
+                    },
+                    {
+                        competition: { name: "Serie A", emblem: "https://crests.football-data.org/SA.png" },
+                        homeTeam: { name: "Juventus", crest: "https://crests.football-data.org/109.png" },
+                        awayTeam: { name: "Inter Milan", crest: "https://crests.football-data.org/108.png" },
+                        score: { fullTime: { home: 1, away: 1 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-19T18:45:00Z"
+                    },
+                    {
+                        competition: { name: "Champions League", emblem: "https://crests.football-data.org/CL.png" },
+                        homeTeam: { name: "Bayern Munich", crest: "https://crests.football-data.org/5.png" },
+                        awayTeam: { name: "Arsenal", crest: "https://crests.football-data.org/57.png" },
+                        score: { fullTime: { home: null, away: null } },
+                        status: "SCHEDULED",
+                        utcDate: "2024-04-22T19:00:00Z"
+                    },
+                    {
+                        competition: { name: "Premier League", emblem: "https://crests.football-data.org/PL.png" },
+                        homeTeam: { name: "Chelsea", crest: "https://crests.football-data.org/61.png" },
+                        awayTeam: { name: "Manchester United", crest: "https://crests.football-data.org/66.png" },
+                        score: { fullTime: { home: 2, away: 2 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-18T19:45:00Z"
+                    },
+                    {
+                        competition: { name: "Ligue 1", emblem: "https://crests.football-data.org/FL1.png" },
+                        homeTeam: { name: "Paris Saint-Germain", crest: "https://crests.football-data.org/524.png" },
+                        awayTeam: { name: "Marseille", crest: "https://crests.football-data.org/516.png" },
+                        score: { fullTime: { home: 3, away: 0 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-17T20:00:00Z"
+                    },
+                    {
+                        competition: { name: "Bundesliga", emblem: "https://crests.football-data.org/BL1.png" },
+                        homeTeam: { name: "Borussia Dortmund", crest: "https://crests.football-data.org/4.png" },
+                        awayTeam: { name: "RB Leipzig", crest: "https://crests.football-data.org/721.png" },
+                        score: { fullTime: { home: 1, away: 1 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-16T18:30:00Z"
+                    },
+                    {
+                        competition: { name: "Premier League", emblem: "https://crests.football-data.org/PL.png" },
+                        homeTeam: { name: "Tottenham", crest: "https://crests.football-data.org/73.png" },
+                        awayTeam: { name: "Newcastle", crest: "https://crests.football-data.org/67.png" },
+                        score: { fullTime: { home: 4, away: 0 } },
+                        status: "FINISHED",
+                        utcDate: "2024-04-15T16:30:00Z"
+                    }
+                ];
+                
+                renderMatchResults(mockMatches);
+            } catch (error) {
+                console.error("Error fetching match results:", error);
+                showError("scores", "Failed to load match results. Please try again later.");
+            }
+        }
+        
+        // Render match results
+        function renderMatchResults(matches) {
+            const container = document.querySelector('#scores .table-container');
+            
+            if (!matches || matches.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="far fa-futbol"></i></div>
+                        <h3>No matches available</h3>
+                        <p>There are no match results to display at the moment.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Competition</th>
+                            <th>Home Team</th>
+                            <th>Score</th>
+                            <th>Away Team</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="match-results">
+            `;
+            
+            matches.forEach((match, index) => {
+                const date = new Date(match.utcDate);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                let status = match.status;
+                let statusClass = '';
+                if (status === "FINISHED") {
+                    status = "FT";
+                    statusClass = 'status-finished';
+                } else if (status === "SCHEDULED") {
+                    status = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    statusClass = 'status-scheduled';
+                } else if (status === "LIVE") {
+                    status = "LIVE";
+                    statusClass = 'status-live';
+                }
+                
+                let rowClass = "";
+                let scoreClass = "";
+                
+                if (match.status === "FINISHED") {
+                    if (match.score.fullTime.home > match.score.fullTime.away) {
+                        rowClass = "win";
+                        scoreClass = "win";
+                    } else if (match.score.fullTime.home < match.score.fullTime.away) {
+                        rowClass = "loss";
+                        scoreClass = "loss";
+                    } else {
+                        rowClass = "draw";
+                        scoreClass = "draw";
+                    }
+                }
+                
+                const homeScore = match.score.fullTime.home !== null ? match.score.fullTime.home : "-";
+                const awayScore = match.score.fullTime.away !== null ? match.score.fullTime.away : "-";
+                
+                html += `
+                    <tr class="match-row ${rowClass} animate__animated animate__fadeIn" style="animation-delay: ${index * 0.1}s">
+                        <td>
+                            <div class="team-cell">
+                                <img src="${match.competition.emblem}" alt="${match.competition.name}" class="team-logo">
+                                ${match.competition.name}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="team-cell">
+                                <img src="${match.homeTeam.crest}" alt="${match.homeTeam.name}" class="team-logo">
+                                ${match.homeTeam.name}
+                            </div>
+                        </td>
+                        <td class="score ${scoreClass}">${homeScore} - ${awayScore}</td>
+                        <td>
+                            <div class="team-cell">
+                                <img src="${match.awayTeam.crest}" alt="${match.awayTeam.name}" class="team-logo">
+                                ${match.awayTeam.name}
+                            </div>
+                        </td>
+                        <td><span class="match-status ${statusClass}">${status}</span></td>
+                        <td>${formattedDate}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+        
+        // Fetch football news from API
+        async function fetchFootballNews() {
+            try {
+                // In a real app, you would use the actual API call:
+                // const response = await fetch(`${API_CONFIG.newsApi.baseUrl}everything?q=football&apiKey=${API_CONFIG.newsApi.apiKey}&pageSize=6`);
+                // const data = await response.json();
+                
+                // For demo purposes, we'll use mock data
+                const mockNews = [
+                    {
+                        title: "Mbappé officially close to joining Real Madrid",
+                        description: "Sources close to French player Kylian Mbappé confirmed that he has already signed a contract with Real Madrid and will join them next summer after his contract with Paris Saint-Germain ends.",
+                        urlToImage: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "La Liga News" },
+                        publishedAt: "2024-04-22T10:30:00Z",
+                        category: "Transfers",
+                        url: "#"
+                    },
+                    {
+                        title: "Al Ahly qualifies for CAF Champions League final after thrilling win",
+                        description: "Egypt's Al Ahly qualified for the CAF Champions League final after defeating Tunisia's Esperance 3-2 on aggregate in the semi-finals.",
+                        urlToImage: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "African Football" },
+                        publishedAt: "2024-04-22T08:15:00Z",
+                        category: "Champions League",
+                        url: "#"
+                    },
+                    {
+                        title: "Serious injury for Barcelona star during training",
+                        description: "Barcelona's Spanish midfielder suffered an ACL injury during daily training and will be out for at least 6 months, dealing a major blow to the team's title hopes.",
+                        urlToImage: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "La Liga News" },
+                        publishedAt: "2024-04-21T16:45:00Z",
+                        category: "Injuries",
+                        url: "#"
+                    },
+                    {
+                        title: "Premier League announces new financial rules to replace FFP",
+                        description: "The Premier League has agreed to implement new financial regulations that will replace the existing Financial Fair Play rules starting next season.",
+                        urlToImage: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "Premier League" },
+                        publishedAt: "2024-04-21T14:20:00Z",
+                        category: "Regulations",
+                        url: "#"
+                    },
+                    {
+                        title: "Haaland breaks Premier League scoring record",
+                        description: "Manchester City's Erling Haaland has broken the Premier League single-season scoring record with his 35th goal of the campaign in just 30 appearances.",
+                        urlToImage: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "Premier League" },
+                        publishedAt: "2024-04-20T22:10:00Z",
+                        category: "Records",
+                        url: "#"
+                    },
+                    {
+                        title: "UEFA announces new Champions League format for 2024/25 season",
+                        description: "European football's governing body has confirmed the new 'Swiss model' format for the Champions League that will be implemented starting next season.",
+                        urlToImage: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        source: { name: "UEFA" },
+                        publishedAt: "2024-04-20T11:30:00Z",
+                        category: "Champions League",
+                        url: "#"
+                    }
+                ];
+                
+                renderFootballNews(mockNews);
+            } catch (error) {
+                console.error("Error fetching football news:", error);
+                showError("news", "Failed to load football news. Please try again later.");
+            }
+        }
+        
+        // Render football news
+        function renderFootballNews(articles) {
+            const container = document.querySelector('#news .news-container');
+            
+            if (!articles || articles.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="far fa-newspaper"></i></div>
+                        <h3>No news available</h3>
+                        <p>There are no news articles to display at the moment.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            articles.forEach((article, index) => {
+                const date = new Date(article.publishedAt);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric'
+                });
+                
+                const hoursAgo = Math.floor((new Date() - date) / (1000 * 60 * 60));
+                const timeText = hoursAgo < 24 ? `${hoursAgo} hours ago` : formattedDate;
+                
+                html += `
+                    <article class="news-item animate__animated animate__fadeIn" style="animation-delay: ${index * 0.1}s">
+                        <div class="news-image-container">
+                            <img src="${article.urlToImage}" alt="${article.title}" class="news-image" loading="lazy">
+                            <span class="news-category">${article.category}</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>${article.title}</h3>
+                            <p>${article.description}</p>
+                            <a href="${article.url}" class="read-more">
+                                Read more <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="news-meta">
+                                <span>${article.source.name}</span>
+                                <span>${timeText}</span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        // Fetch league table from API
+        async function fetchLeagueTable() {
+            try {
+                // In a real app, you would use the actual API call:
+                // const response = await fetch(`${API_CONFIG.footballData.baseUrl}competitions/PL/standings`, {
+                //     headers: { 'X-Auth-Token': API_CONFIG.footballData.apiKey }
+                // });
+                // const data = await response.json();
+                
+                // For demo purposes, we'll use mock data
+                const mockStandings = [
+                    {
+                        position: 1,
+                        team: { name: "Manchester City", crest: "https://crests.football-data.org/65.png" },
+                        playedGames: 32,
+                        won: 24,
+                        draw: 5,
+                        lost: 3,
+                        goalsFor: 72,
+                        goalsAgainst: 25,
+                        goalDifference: 47,
+                        points: 77,
+                        form: "WWWDW"
+                    },
+                    {
+                        position: 2,
+                        team: { name: "Arsenal", crest: "https://crests.football-data.org/57.png" },
+                        playedGames: 32,
+                        won: 23,
+                        draw: 6,
+                        lost: 3,
+                        goalsFor: 78,
+                        goalsAgainst: 28,
+                        goalDifference: 50,
+                        points: 75,
+                        form: "WWWLW"
+                    },
+                    {
+                        position: 3,
+                        team: { name: "Liverpool", crest: "https://crests.football-data.org/64.png" },
+                        playedGames: 32,
+                        won: 22,
+                        draw: 8,
+                        lost: 2,
+                        goalsFor: 75,
+                        goalsAgainst: 30,
+                        goalDifference: 45,
+                        points: 74,
+                        form: "WDWLW"
+                    },
+                    {
+                        position: 4,
+                        team: { name: "Aston Villa", crest: "https://crests.football-data.org/58.png" },
+                        playedGames: 32,
+                        won: 19,
+                        draw: 6,
+                        lost: 7,
+                        goalsFor: 62,
+                        goalsAgainst: 42,
+                        goalDifference: 20,
+                        points: 63,
+                        form: "LDWWW"
+                    },
+                    {
+                        position: 5,
+                        team: { name: "Tottenham", crest: "https://crests.football-data.org/73.png" },
+                        playedGames: 32,
+                        won: 18,
+                        draw: 6,
+                        lost: 8,
+                        goalsFor: 65,
+                        goalsAgainst: 49,
+                        goalDifference: 16,
+                        points: 60,
+                        form: "WWLLW"
+                    },
+                    {
+                        position: 6,
+                        team: { name: "Newcastle", crest: "https://crests.football-data.org/67.png" },
+                        playedGames: 32,
+                        won: 16,
+                        draw: 5,
+                        lost: 11,
+                        goalsFor: 68,
+                        goalsAgainst: 45,
+                        goalDifference: 23,
+                        points: 53,
+                        form: "WLWLW"
+                    },
+                    {
+                        position: 7,
+                        team: { name: "Manchester United", crest: "https://crests.football-data.org/66.png" },
+                        playedGames: 32,
+                        won: 15,
+                        draw: 5,
+                        lost: 12,
+                        goalsFor: 47,
+                        goalsAgainst: 48,
+                        goalDifference: -1,
+                        points: 50,
+                        form: "LLLWD"
+                    },
+                    {
+                        position: 8,
+                        team: { name: "West Ham", crest: "https://crests.football-data.org/563.png" },
+                        playedGames: 32,
+                        won: 13,
+                        draw: 9,
+                        lost: 10,
+                        goalsFor: 52,
+                        goalsAgainst: 54,
+                        goalDifference: -2,
+                        points: 48,
+                        form: "WDLWL"
+                    },
+                    {
+                        position: 9,
+                        team: { name: "Chelsea", crest: "https://crests.football-data.org/61.png" },
+                        playedGames: 31,
+                        won: 13,
+                        draw: 8,
+                        lost: 10,
+                        goalsFor: 54,
+                        goalsAgainst: 50,
+                        goalDifference: 4,
+                        points: 47,
+                        form: "DWLLW"
+                    },
+                    {
+                        position: 10,
+                        team: { name: "Brighton", crest: "https://crests.football-data.org/397.png" },
+                        playedGames: 32,
+                        won: 11,
+                        draw: 11,
+                        lost: 10,
+                        goalsFor: 52,
+                        goalsAgainst: 50,
+                        goalDifference: 2,
+                        points: 44,
+                        form: "DLDLW"
+                    }
+                ];
+                
+                renderLeagueTable(mockStandings);
+            } catch (error) {
+                console.error("Error fetching league table:", error);
+                showError("table", "Failed to load league table. Please try again later.");
+            }
+        }
+        
+        // Render league table
+        function renderLeagueTable(standings) {
+            const container = document.querySelector('#table .table-container');
+            
+            if (!standings || standings.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="fas fa-table"></i></div>
+                        <h3>No standings available</h3>
+                        <p>There is no league table data to display at the moment.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Team</th>
+                            <th>Played</th>
+                            <th>Won</th>
+                            <th>Drawn</th>
+                            <th>Lost</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                            <th>Points</th>
+                            <th>Form</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            standings.forEach((team, index) => {
+                // Create last games indicators
+                let lastGamesHtml = '<div class="last-games">';
+                for (let i = 0; i < team.form.length; i++) {
+                    const result = team.form[i];
+                    if (result === 'W') {
+                        lastGamesHtml += '<span class="win">W</span>';
+                    } else if (result === 'D') {
+                        lastGamesHtml += '<span class="draw">D</span>';
+                    } else if (result === 'L') {
+                        lastGamesHtml += '<span class="loss">L</span>';
+                    }
+                }
+                lastGamesHtml += '</div>';
+                
+                html += `
+                    <tr class="animate__animated animate__fadeIn" style="animation-delay: ${index * 0.05}s">
+                        <td>${team.position}</td>
+                        <td>
+                            <div class="team-cell">
+                                <img src="${team.team.crest}" alt="${team.team.name}" class="team-logo">
+                                ${team.team.name}
+                            </div>
+                        </td>
+                        <td>${team.playedGames}</td>
+                        <td>${team.won}</td>
+                        <td>${team.draw}</td>
+                        <td>${team.lost}</td>
+                        <td>${team.goalsFor}</td>
+                        <td>${team.goalsAgainst}</td>
+                        <td>${team.goalDifference}</td>
+                        <td><strong>${team.points}</strong></td>
+                        <td>${lastGamesHtml}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+        
+        // Fetch top players from API
+        async function fetchTopPlayers() {
+            try {
+                // In a real app, you would use the actual API call:
+                // const response = await fetch(`${API_CONFIG.footballData.baseUrl}players/topscorers`, {
+                //     headers: { 'X-Auth-Token': API_CONFIG.footballData.apiKey }
+                // });
+                // const data = await response.json();
+                
+                // For demo purposes, we'll use mock data with working images
+                const mockPlayers = [
+                    {
+                        name: "Lionel Messi",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/28003-1694590254.jpg",
+                        desc: "Forward - Argentina",
+                        team: "Inter Miami",
+                        teamLogo: "https://crests.football-data.org/6929.png",
+                        goals: 32,
+                        assists: 18,
+                        rating: 9.1,
+                        position: 1,
+                        trophies: [
+                            {icon: "🏆", name: "World Cup 2022"},
+                            {icon: "⚽", name: "La Liga all-time top scorer"},
+                            {icon: "⭐", name: "7 Ballon d'Or"}
+                        ]
+                    },
+                    {
+                        name: "Cristiano Ronaldo",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/8198-1671435882.jpg",
+                        desc: "Forward - Portugal",
+                        team: "Al Nassr",
+                        teamLogo: "https://crests.football-data.org/7448.png",
+                        goals: 35,
+                        assists: 12,
+                        rating: 8.9,
+                        position: 2,
+                        trophies: [
+                            {icon: "🏆", name: "Euro 2016"},
+                            {icon: "⚽", name: "UCL all-time top scorer"},
+                            {icon: "⭐", name: "5 Ballon d'Or"}
+                        ]
+                    },
+                    {
+                        name: "Kylian Mbappé",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/342229-1687343115.jpg",
+                        desc: "Forward - France",
+                        team: "Paris Saint-Germain",
+                        teamLogo: "https://crests.football-data.org/524.png",
+                        goals: 38,
+                        assists: 9,
+                        rating: 8.8,
+                        position: 3,
+                        trophies: [
+                            {icon: "🏆", name: "World Cup 2018"},
+                            {icon: "⚽", name: "Ligue 1 top scorer 3 times"},
+                            {icon: "👟", name: "Best Young Player in the World"}
+                        ]
+                    },
+                    {
+                        name: "Erling Haaland",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/418560-1671436261.jpg",
+                        desc: "Forward - Norway",
+                        team: "Manchester City",
+                        teamLogo: "https://crests.football-data.org/65.png",
+                        goals: 30,
+                        assists: 7,
+                        rating: 8.7,
+                        position: 4,
+                        trophies: [
+                            {icon: "🏆", name: "Premier League 2023"},
+                            {icon: "⚽", name: "UCL top scorer 2023"},
+                            {icon: "👑", name: "UEFA Best Player Award"}
+                        ]
+                    },
+                    {
+                        name: "Kevin De Bruyne",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/88755-1671435873.jpg",
+                        desc: "Midfielder - Belgium",
+                        team: "Manchester City",
+                        teamLogo: "https://crests.football-data.org/65.png",
+                        goals: 12,
+                        assists: 24,
+                        rating: 8.6,
+                        position: 5,
+                        trophies: [
+                            {icon: "🏆", name: "Premier League 5 times"},
+                            {icon: "🎯", name: "Premier League Playmaker"},
+                            {icon: "⭐", name: "PFA Players' Player of the Year"}
+                        ]
+                    },
+                    {
+                        name: "Vinicius Junior",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/371998-1671436331.jpg",
+                        desc: "Forward - Brazil",
+                        team: "Real Madrid",
+                        teamLogo: "https://crests.football-data.org/86.png",
+                        goals: 22,
+                        assists: 15,
+                        rating: 8.5,
+                        position: 6,
+                        trophies: [
+                            {icon: "🏆", name: "Champions League 2022"},
+                            {icon: "⚽", name: "UCL Final winning goal"},
+                            {icon: "🌟", name: "UCL Young Player Award"}
+                        ]
+                    },
+                    {
+                        name: "Harry Kane",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/371998-1671436331.jpg",
+                        desc: "Forward - England",
+                        team: "Bayern Munich",
+                        teamLogo: "https://crests.football-data.org/5.png",
+                        goals: 36,
+                        assists: 8,
+                        rating: 8.4,
+                        position: 7,
+                        trophies: [
+                            {icon: "🏆", name: "Bundesliga 2024"},
+                            {icon: "⚽", name: "Premier League all-time top scorer"},
+                            {icon: "🥇", name: "World Cup Golden Boot 2018"}
+                        ]
+                    },
+                    {
+                        name: "Jude Bellingham",
+                        img: "https://img.a.transfermarkt.technology/portrait/big/581678-1671436323.jpg",
+                        desc: "Midfielder - England",
+                        team: "Real Madrid",
+                        teamLogo: "https://crests.football-data.org/86.png",
+                        goals: 21,
+                        assists: 10,
+                        rating: 8.3,
+                        position: 8,
+                        trophies: [
+                            {icon: "🏆", name: "La Liga 2024"},
+                            {icon: "⭐", name: "Golden Boy 2023"},
+                            {icon: "🌟", name: "Kopa Trophy"}
+                        ]
+                    }
+                ];
+                
+                renderTopPlayers(mockPlayers);
+            } catch (error) {
+                console.error("Error fetching top players:", error);
+                showError("players", "Failed to load top players. Please try again later.");
+            }
+        }
+        
+        // Render top players
+        function renderTopPlayers(players) {
+            const container = document.querySelector('#players .players-grid');
+            
+            if (!players || players.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="fas fa-users"></i></div>
+                        <h3>No players available</h3>
+                        <p>There are no player profiles to display at the moment.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            players.forEach((player, index) => {
+                const badgeClass = player.position === 1 ? 'badge-gold' : 
+                                  player.position === 2 ? 'badge-silver' : 
+                                  player.position === 3 ? 'badge-bronze' : '';
+                const badgeText = player.position === 1 ? '1' : 
+                                 player.position === 2 ? '2' : 
+                                 player.position === 3 ? '3' : '';
+                
+                let trophiesHtml = '';
+                if (player.trophies && player.trophies.length > 0) {
+                    trophiesHtml = '<div class="player-trophies">';
+                    player.trophies.forEach(trophy => {
+                        trophiesHtml += `<span class="trophy-item">${trophy.icon} ${trophy.name}</span>`;
+                    });
+                    trophiesHtml += '</div>';
+                }
+                
+                html += `
+                    <div class="player-card animate__animated animate__fadeInUp" style="animation-delay: ${index * 0.1}s">
+                        ${player.position <= 3 ? `<div class="player-badge ${badgeClass}">${badgeText}</div>` : ''}
+                        <img src="${player.img}" alt="${player.name}" width="160" height="160" loading="lazy">
+                        <h3>${player.name}</h3>
+                        <p>${player.desc}</p>
+                        <span class="player-team">
+                            <img src="${player.teamLogo}" alt="${player.team}" class="player-team-logo">
+                            ${player.team}
+                        </span>
+                        <div class="player-stats">
+                            <div class="stat">
+                                <span class="stat-value">${player.goals}</span>
+                                <span class="stat-label">Goals</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">${player.assists}</span>
+                                <span class="stat-label">Assists</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">${player.rating}</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+                        ${trophiesHtml}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        // Show error message
+        function showError(sectionId, message) {
+            const container = document.querySelector(`#${sectionId} .table-container, #${sectionId} .news-container, #${sectionId} .players-grid`);
+            if (container) {
+                container.innerHTML = `
+                    <div class="error-message">
+                        <div class="error-icon"><i class="fas fa-exclamation-circle"></i></div>
+                        <p>${message}</p>
+                        <button class="retry-button" onclick="loadSectionData('${sectionId}')">
+                            <i class="fas fa-sync-alt"></i> Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        // Show content section and update active nav link
+        function showContent(sectionId, btn) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            
+            // Show selected section
+            const section = document.getElementById(sectionId);
+            section.classList.add('active');
+            
+            // Load data if not already loaded
+            if (!section.querySelector('.error-message') && 
+                !section.querySelector('table') && 
+                !section.querySelector('.news-item') && 
+                !section.querySelector('.player-card')) {
+                loadSectionData(sectionId);
+            }
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            if (btn) {
+                btn.classList.add('active');
+            } else {
+                // If called without button (e.g., from URL hash)
+                const navLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                if (navLink) navLink.classList.add('active');
+            }
+            
+            // Update URL hash
+            window.location.hash = sectionId;
+            
+            // Scroll to section
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+        
+        // Toggle between light and dark themes
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+            updateToggleThumb();
+        }
+        
+        // Update theme toggle thumb icon
+        function updateToggleThumb() {
+            const thumb = document.querySelector('.toggle-thumb');
+            if (document.body.classList.contains("dark-mode")) {
+                thumb.innerHTML = '<i class="fas fa-moon"></i>';
+                thumb.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                thumb.innerHTML = '<i class="fas fa-sun"></i>';
+                thumb.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+        
+        // Setup intersection observer for scroll animations
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__fadeIn');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.animate__animated').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Handle URL hash changes
+        window.addEventListener('hashchange', () => {
+            const sectionId = window.location.hash.substring(1);
+            if (sectionId && document.getElementById(sectionId)) {
+                showContent(sectionId);
+            }
+        });
+    </script>
 </body>
 </html>
